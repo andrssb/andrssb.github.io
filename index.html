@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andres Barbosa · Dev</title>
+<meta name="description" content="Andres Barbosa, desenvolvedor full stack em Belo Horizonte. Sites e sistemas que fazem a empresa vender: pedido pronto no WhatsApp, atendimento automático, CRM e dados.">
+<meta property="og:title" content="Andres Barbosa · Dev">
+<meta property="og:description" content="Sites e sistemas que fazem a empresa vender.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e120f'/%3E%3Ctext x='32' y='42' font-family='monospace' font-weight='700' font-size='28' fill='%23a3e635' text-anchor='middle'%3EAB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  (function () {
+    try { var t = localStorage.getItem('andresTema'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+  })();
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a href="#inicio" class="marca">andres<span>.dev</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="links">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <div class="links" id="links">
+      <a href="#sobre">sobre</a>
+      <a href="#projetos">projetos</a>
+      <a href="#dados">dados</a>
+      <a href="#stack">stack</a>
+      <a href="#contato">contato</a>
+      <button class="tema" id="tema" aria-label="Alternar tema claro ou escuro" title="Alternar tema">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <div class="status"><i></i> disponível para novos projetos</div>
+    <p class="mono kicker">full stack · automação · dados</p>
+    <h1>Sistemas que fazem<br>a empresa <span class="destaque" data-text="vender.">vender.</span></h1>
+    <p class="hero-sub">Sou Andres Barbosa, desenvolvedor em Belo Horizonte. Construo sites em que o pedido chega pronto no WhatsApp, atendentes automáticos, CRMs e pipelines de dados. Antes do código, trabalhei com vendas, e é por isso que eu começo pelo problema do negócio.</p>
+    <div class="ctas">
+      <a class="btn cheio" href="#projetos">ver projetos</a>
+      <a class="btn vazio" href="https://wa.me/5531982775122?text=Ol%C3%A1%20Andres%2C%20vi%20seu%20portf%C3%B3lio" target="_blank" rel="noopener">&gt;_ falar no WhatsApp</a>
+    </div>
+    <pre class="terminal" aria-hidden="true"><span class="c">$</span> whoami
+andres barbosa · belo horizonte, mg
+<span class="c">$</span> cat foco.txt
+pedido pronto no whatsapp · atendimento automático · crm · dados
+<span class="c">$</span> <span class="cursor"></span></pre>
+  </div>
+</header>
+
+<main>
+<section class="secao" id="sobre">
+  <div class="wrap sobre">
+    <div>
+      <p class="mono rotulo">// sobre</p>
+      <h2>Do telefone de vendas ao editor de código.</h2>
+      <p>Comecei em vendas, como SDR, prospectando e qualificando empresas. Foi ali que eu vi o quanto de venda se perde em processo manual: pedido anotado na mão, lead esquecido, follow-up que não acontece.</p>
+      <p>Hoje eu escrevo o software que resolve isso. Atendo pequenas empresas com sites e sistemas sob medida e desenvolvo produtos próprios de prospecção. Minha formação é em Análise e Desenvolvimento de Sistemas, pela Descomplica.</p>
+      <p>Gosto de coisa que vai para o ar e é usada de verdade: cada projeto aqui tem um cliente, um usuário ou uma pergunta real por trás.</p>
+    </div>
+    <div class="numeros">
+      <div><b>11</b><span>projetos publicados</span></div>
+      <div><b>5.016</b><span>restaurantes analisados no projeto de dados</span></div>
+      <div><b>27</b><span>capitais cobertas pela coleta</span></div>
+      <div><b>3</b><span>anos desenvolvendo</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="secao" id="projetos">
+  <div class="wrap">
+    <p class="mono rotulo">// projetos</p>
+    <h2>O que eu construí</h2>
+    <div class="filtros" role="tablist" aria-label="Filtrar projetos">
+      <button class="ativo" data-f="todos">todos</button>
+      <button data-f="cliente">clientes</button>
+      <button data-f="produto">produtos</button>
+      <button data-f="dados">dados</button>
+      <button data-f="jogo">jogos</button>
+      <button data-f="estudo">estudos</button>
+    </div>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<section class="secao" id="dados">
+  <div class="wrap dados">
+    <div>
+      <p class="mono rotulo">// laboratório de dados</p>
+      <h2>Raio-X do delivery nas 27 capitais</h2>
+      <p>Pergunta de negócio: quantos restaurantes de delivery ainda dependem do WhatsApp na mão ou de aplicativo com comissão? Para responder, coletei 5.016 restaurantes no Google Maps, detectei a plataforma de cada site e cruzei tudo em Python.</p>
+      <ul class="achados">
+        <li><b>67%</b> dos independentes bem avaliados não têm onde o cliente faça o pedido sozinho.</li>
+        <li><b>21%</b> das marmitarias vendem on-line, contra 47% das pizzarias.</li>
+        <li><b>13+</b> plataformas diferentes disputam quem já se digitalizou.</li>
+      </ul>
+      <a class="btn cheio" href="dados-restaurantes/">abrir o painel</a>
+    </div>
+    <a class="preview" href="dados-restaurantes/" aria-label="Abrir o painel Raio-X do delivery">
+      <svg viewBox="0 0 400 250" role="img" aria-label="Prévia do painel: percentual com pedido on-line por segmento">
+        <text x="20" y="34" class="pv-t">% com "Pedir on-line"</text>
+        <g class="pv-l"><text x="20" y="78">Pizzaria</text><text x="20" y="118">Hamburgueria</text><text x="20" y="158">Japonês</text><text x="20" y="198">Marmitaria</text></g>
+        <g class="pv-b">
+          <rect x="130" y="64" width="174" height="18" rx="4"/><rect x="130" y="104" width="161" height="18" rx="4"/>
+          <rect x="130" y="144" width="148" height="18" rx="4"/><rect x="130" y="184" width="78" height="18" rx="4"/>
+        </g>
+        <g class="pv-v"><text x="312" y="78">47%</text><text x="299" y="118">44%</text><text x="286" y="158">40%</text><text x="216" y="198">21%</text></g>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<section class="secao" id="stack">
+  <div class="wrap">
+    <p class="mono rotulo">// stack</p>
+    <h2>Ferramentas do dia a dia</h2>
+    <div class="stack">
+      <div><h3>Front-end</h3><p>JavaScript, TypeScript, React, HTML e CSS, SVG e Canvas, Flutter</p></div>
+      <div><h3>Back-end</h3><p>Node.js, Python e FastAPI, Java e Spring Boot, APIs REST, webhooks</p></div>
+      <div><h3>Dados</h3><p>PostgreSQL, SQLite, Redis, Python para análise, Playwright para coleta</p></div>
+      <div><h3>Infra</h3><p>Vercel, Cloudflare Workers, Railway, Render, GitHub Pages, Docker</p></div>
+      <div><h3>Integrações</h3><p>WhatsApp Business API, Stripe, HubSpot, Google Calendar, APIs de IA</p></div>
+      <div><h3>Qualidade</h3><p>pytest, JUnit, testes de ponta a ponta com Playwright, Git</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="secao" id="contato">
+  <div class="wrap contato">
+    <p class="mono rotulo">// contato</p>
+    <h2>Tem um processo que vive no papel ou no WhatsApp?</h2>
+    <p>Me conta como funciona hoje. Eu te digo o que dá para automatizar e quanto custa, sem compromisso.</p>
+    <a class="zap" href="https://wa.me/5531982775122?text=Ol%C3%A1%20Andres%2C%20vi%20seu%20portf%C3%B3lio" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>
+      <span><small>WhatsApp</small>(31) 98277-5122</span>
+    </a>
+    <div class="outros">
+      <a href="mailto:sbarbosaandres@gmail.com">sbarbosaandres@gmail.com</a>
+      <a href="https://github.com/andrssb" target="_blank" rel="noopener">github.com/andrssb</a>
+      <a href="https://linkedin.com/in/andres-barbosa-496088406" target="_blank" rel="noopener">linkedin</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="rodape"><div class="wrap">Andres Barbosa · Belo Horizonte, MG</div></footer>
+
+<script src="script.js"></script>
+</body>
+</html>
