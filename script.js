@@ -4,14 +4,14 @@ const ponteiroFino = matchMedia('(pointer: fine)').matches;
 // ---------- dados ----------
 const PROJETOS = [
   {
-    nome: 'Projeto Back-end', tipo: 'construcao', tag: 'EM CONSTRUÇÃO', tecs: 'em breve',
-    texto: 'Um back-end pesado, do tipo que exige arquitetura, concorrência e testes de verdade. Em desenvolvimento.',
-    links: [], priv: 'em desenvolvimento',
+    nome: 'Caixa Forte API', tipo: 'andamento', tag: 'EM ANDAMENTO', tecs: 'Java · Spring Boot · PostgreSQL · Redis · Docker',
+    texto: 'API de pagamentos com livro-razão de dupla entrada, idempotência por chave de requisição, controle de concorrência no saldo e fila de eventos com reprocessamento. Testes de carga e de corrida.',
+    links: [], priv: 'em andamento',
   },
   {
-    nome: 'Projeto Banco de Dados', tipo: 'construcao', tag: 'EM CONSTRUÇÃO', tecs: 'em breve',
-    texto: 'Um projeto de banco de dados igualmente pesado: modelagem, desempenho de consultas e volume real. Em desenvolvimento.',
-    links: [], priv: 'em desenvolvimento',
+    nome: 'Armazém Analítico', tipo: 'andamento', tag: 'EM ANDAMENTO', tecs: 'PostgreSQL · SQL · Python · dbt · Docker',
+    texto: 'Data warehouse de vendas em modelo dimensional, com carga incremental, tabelas particionadas, índices e visões materializadas para consultas analíticas sobre dezenas de milhões de linhas.',
+    links: [], priv: 'em andamento',
   },
   {
     nome: 'Limo', tipo: 'produto', tecs: 'TypeScript · Node.js · React · PostgreSQL · Stripe',
