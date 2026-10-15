@@ -1,64 +1,65 @@
 const movimentoReduzido = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ponteiroFino = matchMedia('(pointer: fine)').matches;
 
 // ---------- dados ----------
 const PROJETOS = [
   {
-    nome: 'Thiago Castro', tipo: 'cliente', tec: 'JavaScript · TypeScript · Cloudflare Workers · WhatsApp API',
+    nome: 'Thiago Castro', tipo: 'cliente', tecs: 'JavaScript · TypeScript · Cloudflare Workers · WhatsApp API',
     texto: 'Site de encomendas de uma confeitaria de Manaus: a cliente monta o bolo e o pedido chega pronto no WhatsApp da loja. Uma atendente virtual responde as clientes pela API oficial do WhatsApp.',
     res: 'No ar com domínio próprio, atendendo os clientes da loja.',
     links: [['ver o site', 'https://thiagocastroconfeitaria.com.br/']],
   },
   {
-    nome: 'Limo', tipo: 'produto', tec: 'TypeScript · Node.js · React · PostgreSQL · Stripe',
+    nome: 'Limo', tipo: 'produto', tecs: 'TypeScript · Node.js · React · PostgreSQL · Stripe',
     texto: 'Plataforma B2B de prospecção: encontra empresas por segmento e região na base aberta da Receita Federal, enriquece os contatos com motor próprio e leva os leads para o CRM. Tem extensão para Chrome.',
     res: 'No ar, com extensão publicada na Chrome Web Store.',
     links: [['conhecer', 'https://limoapp.com.br/']],
   },
   {
-    nome: 'Raio-X do Delivery', tipo: 'dados', tec: 'Python · Node.js · Playwright · SVG',
+    nome: 'Raio-X do Delivery', tipo: 'dados', tecs: 'Python · Node.js · Playwright · SVG',
     texto: 'Coleta e análise de 5.016 restaurantes de delivery nas 27 capitais: quem vende on-line, quem depende de aplicativo e quem não tem canal próprio de pedidos.',
     res: '67% dos independentes não têm onde o cliente pedir sozinho.',
     links: [['abrir o painel', 'dados-restaurantes/']],
   },
   {
-    nome: 'CRM de Prospecção', tipo: 'produto', tec: 'JavaScript · Vercel Functions · Redis · Python',
+    nome: 'CRM de Prospecção', tipo: 'produto', tecs: 'JavaScript · Vercel Functions · Redis · Python',
     texto: 'CRM com um funil por produto, cadência automática de follow-up e sincronização com os disparos. Serverless, com o estado em Redis: abrir o CRM inteiro custa uma leitura só.',
     links: [], priv: 'uso interno, com senha',
   },
   {
-    nome: 'Rumo ao Altar', tipo: 'jogo', tec: 'JavaScript · Canvas · Vercel Functions · Redis',
+    nome: 'Rumo ao Altar', tipo: 'jogo', tecs: 'JavaScript · Canvas · Vercel Functions · Redis',
     texto: 'Jogo de plataforma personalizado para casamentos: a história do casal vira fases e os convidados disputam um ranking até a festa. Já roda no site de casamento de um casal real.',
     links: [['jogar a demo', 'https://rumo-ao-altar.vercel.app/']],
   },
   {
-    nome: 'Forno da Vila', tipo: 'produto', rot: 'DEMO', tec: 'JavaScript · SVG · Cloudflare Workers',
+    nome: 'Forno da Vila', tipo: 'produto', tag: 'DEMO', tecs: 'JavaScript · SVG · Cloudflare Workers',
     texto: 'Cardápio digital de pizzaria com meio a meio, borda, combos, taxa por bairro e troco. O pedido sai formatado direto no WhatsApp, sem comissão de aplicativo.',
     links: [['fazer um pedido teste', 'https://forno-da-vila-demo.thiago-castro.workers.dev/']],
   },
   {
-    nome: 'Castelo Amaldiçoado', tipo: 'jogo', tec: 'Flutter · Dart · Flame · Java · Spring Boot',
+    nome: 'Castelo Amaldiçoado', tipo: 'jogo', tecs: 'Flutter · Dart · Flame · Java · Spring Boot',
     texto: 'Jogo de ação medieval em Flutter com servidor Java: desafio diário gerado pela data e ranking com validação anti-trapaça, em que o servidor recalcula a pontuação.',
-    links: [['jogar', 'https://andrssb.github.io/castelo-amaldicoado/'], ['código', 'https://github.com/andrssb/castelo-amaldicoado']],
+    links: [['jogar', 'https://andrssb.github.io/castelo-amaldicoado/'], ['ver no GitHub', 'https://github.com/andrssb/castelo-amaldicoado']],
   },
   {
-    nome: 'V360 Verde', tipo: 'dados', rot: 'PROTÓTIPO', tec: 'JavaScript · SVG · GHG Protocol',
+    nome: 'V360 Verde', tipo: 'dados', tag: 'PROTÓTIPO', tecs: 'JavaScript · SVG · GHG Protocol',
     texto: 'Painel ESG que calcula a pegada de carbono a partir das contas de energia, água e gás, detecta consumo fora da curva e gera o inventário de emissões. Dados simulados.',
-    links: [['ver o protótipo', 'https://andrssb.github.io/v360-verde-demo/'], ['código', 'https://github.com/andrssb/v360-verde-demo']],
+    links: [['ver o protótipo', 'https://andrssb.github.io/v360-verde-demo/'], ['ver no GitHub', 'https://github.com/andrssb/v360-verde-demo']],
   },
   {
-    nome: 'Minecraft Status', tipo: 'estudo', tec: 'Python · FastAPI',
+    nome: 'Minecraft Status', tipo: 'estudo', tecs: 'Python · FastAPI',
     texto: 'Painel que consulta servidores de Minecraft pelo protocolo Server List Ping: online, jogadores, versão, MOTD colorido, ping e ícone.',
-    links: [['código', 'https://github.com/andrssb/minecraft-server-status']],
+    links: [['ver no GitHub', 'https://github.com/andrssb/minecraft-server-status']],
   },
   {
-    nome: 'Raio-X do Texto', tipo: 'estudo', tec: 'Python · FastAPI · pytest',
+    nome: 'Raio-X do Texto', tipo: 'estudo', tecs: 'Python · FastAPI · pytest',
     texto: 'Analisador de estilo de escrita: repetições, advérbios em -mente, frases longas, clichês e voz passiva, com tratamento de particípios irregulares.',
-    links: [['código', 'https://github.com/andrssb/raio-x-do-texto']],
+    links: [['ver no GitHub', 'https://github.com/andrssb/raio-x-do-texto']],
   },
   {
-    nome: 'Controle de Gastos', tipo: 'estudo', tec: 'Python · FastAPI · SQLAlchemy · pytest',
+    nome: 'Controle de Gastos', tipo: 'estudo', tecs: 'Python · FastAPI · SQLAlchemy · pytest',
     texto: 'Controle de gastos pessoais com banco em camadas, testes isolados e gráfico por categoria desenhado sem biblioteca.',
-    links: [['código', 'https://github.com/andrssb/controle-de-gastos']],
+    links: [['ver no GitHub', 'https://github.com/andrssb/controle-de-gastos']],
   },
 ];
 
@@ -100,6 +101,9 @@ links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   links.classList.remove('aberto'); menuBtn.setAttribute('aria-expanded', false);
 }));
 
+// ---------- boneco ----------
+desenhaAvatar(document.getElementById('boneco'));
+
 // ---------- boot ----------
 (function boot() {
   const tela = document.getElementById('boot');
@@ -114,34 +118,31 @@ links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   try { visto = !!sessionStorage.getItem('andresBoot'); } catch (e) {}
   if (visto || movimentoReduzido) { tela.remove(); setTimeout(() => dispatchEvent(new Event('bootFim')), 50); return; }
   const linhas = [
-    '> iniciando andres.dev...',
+    '> inicializando andres.dev...',
     '> carregando módulos: front [ok] back [ok] dados [ok] whatsapp [ok]',
     '> conectando ao CRM...',
     '> compilando café...',
-    '> pronto. bem-vindo.',
+    '> acesso concedido.',
   ];
   let i = 0;
   (function proxima() {
-    if (i >= linhas.length) return setTimeout(fim, 380);
+    if (i >= linhas.length) return setTimeout(fim, 400);
     const d = document.createElement('div');
     d.textContent = linhas[i];
     if (i === linhas.length - 1) d.className = 'ok';
     log.appendChild(d); i++;
-    setTimeout(proxima, 240);
+    setTimeout(proxima, 260);
   })();
 })();
 
-// ---------- boneco ----------
-desenhaAvatar(document.getElementById('boneco'));
-
 // ---------- título: embaralha e dá glitch ----------
 const titulo = document.getElementById('titulo');
-function glitch(ms = 320) {
-  titulo.classList.remove('glitch'); void titulo.offsetWidth; titulo.classList.add('glitch');
-  setTimeout(() => titulo.classList.remove('glitch'), ms);
+function glitch(ms = 350) {
+  titulo.classList.remove('glitching'); void titulo.offsetWidth; titulo.classList.add('glitching');
+  setTimeout(() => titulo.classList.remove('glitching'), ms);
 }
-function embaralha(el, dur = 850) {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ01<>/_#*';
+function embaralha(el, dur = 800) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ01#*';
   const nos = [];
   const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
   let n; while ((n = w.nextNode())) nos.push(n);
@@ -159,8 +160,8 @@ function embaralha(el, dur = 850) {
 addEventListener('bootFim', () => {
   if (movimentoReduzido) return;
   embaralha(titulo);
-  setTimeout(glitch, 900);
-  setInterval(glitch, 9000);
+  setTimeout(glitch, 850);
+  setInterval(() => glitch(300), 9000);
 });
 
 // ---------- partículas ----------
@@ -168,28 +169,29 @@ addEventListener('bootFim', () => {
   const c = document.getElementById('particulas');
   if (movimentoReduzido) { c.remove(); return; }
   const ctx = c.getContext('2d');
-  let w, h, pts = [], raf;
+  let w, h, pts = [], raf, rodando = true;
   function init() {
     w = c.width = innerWidth; h = c.height = innerHeight;
-    pts = Array.from({ length: Math.min(70, Math.round(w * h / 22000)) }, () => ({
-      x: Math.random() * w, y: Math.random() * h, r: Math.random() * 1.6 + .4,
-      vx: (Math.random() - .5) * .25, vy: -Math.random() * .3 - .05, a: Math.random() * .5 + .2,
+    pts = Array.from({ length: Math.min(60, Math.round(w * h / 24000)) }, () => ({
+      x: Math.random() * w, y: Math.random() * h, r: Math.random() * 1.6 + .5,
+      vx: (Math.random() - .5) * .2, vy: -Math.random() * .25 - .05, a: Math.random() * .45 + .2,
     }));
   }
   function quadro() {
     ctx.clearRect(0, 0, w, h);
-    const cor = document.documentElement.getAttribute('data-theme') === 'dark' ? '197,242,48' : '79,122,0';
     for (const p of pts) {
       p.x += p.vx; p.y += p.vy;
       if (p.y < -5) { p.y = h + 5; p.x = Math.random() * w; }
       if (p.x < -5) p.x = w + 5; if (p.x > w + 5) p.x = -5;
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283); ctx.fillStyle = `rgba(${cor},${p.a})`; ctx.fill();
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283); ctx.fillStyle = `rgba(150,190,20,${p.a})`; ctx.fill();
     }
-    raf = requestAnimationFrame(quadro);
+    if (rodando) raf = requestAnimationFrame(quadro);
   }
   init(); quadro();
   addEventListener('resize', init);
-  document.addEventListener('visibilitychange', () => { cancelAnimationFrame(raf); if (!document.hidden) quadro(); });
+  document.addEventListener('visibilitychange', () => {
+    rodando = !document.hidden; cancelAnimationFrame(raf); if (rodando) quadro();
+  });
 })();
 
 // ---------- nav: seção ativa, desfoque e progresso ----------
@@ -197,13 +199,11 @@ const nav = document.getElementById('nav');
 const navLinks = [...document.querySelectorAll('.links a')];
 const secoes = [...document.querySelectorAll('section[id]')];
 const barra = document.getElementById('progresso');
-const topo = document.querySelector('.topo');
 let agendado = false;
 function aoRolar() {
   agendado = false;
   const y = scrollY;
   nav.classList.toggle('rolou', y > 20);
-  topo.classList.toggle('mostra', y > 600);
   barra.style.width = (y / Math.max(1, document.documentElement.scrollHeight - innerHeight) * 100) + '%';
   let atual = '';
   for (const s of secoes) { const r = s.getBoundingClientRect(); if (r.top <= 120 && r.bottom >= 120) atual = s.id; }
@@ -212,38 +212,88 @@ function aoRolar() {
 addEventListener('scroll', () => { if (!agendado) { agendado = true; requestAnimationFrame(aoRolar); } }, { passive: true });
 aoRolar();
 
+// ---------- parallax do boneco ----------
+const palco = document.getElementById('palco');
+if (ponteiroFino && !movimentoReduzido) {
+  addEventListener('mousemove', e => {
+    const x = (e.clientX / innerWidth - .5) * 14, y = (e.clientY / innerHeight - .5) * 14;
+    palco.style.transform = `translate(${x}px, ${y}px)`;
+  });
+}
+
+// ---------- revelar ao rolar ----------
+const observador = new IntersectionObserver(entradas => entradas.forEach(en => {
+  if (!en.isIntersecting) return;
+  const el = en.target;
+  el.classList.add('visivel');
+  el.querySelectorAll('[data-conta]').forEach(contador);
+  el.querySelectorAll('.enche').forEach(b => b.style.width = b.dataset.v + '%');
+  if (el.id === 'terminal') digitaTerminal();
+  observador.unobserve(el);
+}), { threshold: .12 });
+function observa(raiz = document) { raiz.querySelectorAll('.revelar:not(.visivel):not(.proj)').forEach(el => observador.observe(el)); }
+
 // ---------- projetos ----------
 const grade = document.getElementById('grade');
 function mostraProjetos(f) {
   const lista = PROJETOS.filter(p => f === 'todos' || p.tipo === f);
-  const colunas = innerWidth > 1000 ? 3 : innerWidth > 600 ? 2 : 1;
-  const sobra = (colunas - lista.length % colunas) % colunas;
-  grade.innerHTML = lista.map((p, i) => `
-    <article class="proj" style="animation-delay:${i * 40}ms">
-      <div class="proj-cab"><h3>${esc(p.nome)}</h3><span class="rot">${esc(p.rot || p.tipo.toUpperCase())}</span></div>
-      <div class="tec">${esc(p.tec)}</div>
+  grade.innerHTML = lista.map(p => `
+    <article class="proj revelar">
+      <span class="brilho"></span><span class="mira m1"></span><span class="mira m2"></span><span class="mira m3"></span><span class="mira m4"></span>
+      <div class="proj-topo"><h3>${esc(p.nome)}</h3><span class="proj-tag">${esc(p.tag || p.tipo.toUpperCase())}</span></div>
+      <div class="tecs">${esc(p.tecs)}</div>
       <p>${esc(p.texto)}</p>
       ${p.res ? `<p class="res">${esc(p.res)}</p>` : ''}
-      <div class="acoes">${p.links.map(([t, u]) => `<a href="${u}"${u.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}>${esc(t)} &rarr;</a>`).join('')}${p.priv ? `<span class="priv">${esc(p.priv)}</span>` : ''}</div>
-    </article>`).join('') + '<div class="vazio"></div>'.repeat(sobra);
+      <div class="acoes">${p.links.map(([t, u]) => `<a class="link" href="${u}"${u.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}>${esc(t)} &rarr;</a>`).join('')}${p.priv ? `<span class="priv">${esc(p.priv)}</span>` : ''}</div>
+    </article>`).join('');
+  completaGrade();
+  [...grade.children].forEach((el, i) => { el.style.transitionDelay = Math.min(i, 8) * 60 + 'ms'; });
   document.getElementById('contaProj').textContent = `${lista.length} ${f === 'todos' ? 'no total' : 'nesta categoria'}`;
+  ativaInclinacao();
+  // o clip-path esconde o card do IntersectionObserver, então quem é observado é a grade
+  if (gradeVista) setTimeout(() => grade.querySelectorAll('.proj').forEach(c => c.classList.add('visivel')), 30);
+}
+let gradeVista = false;
+new IntersectionObserver((en, obs) => {
+  if (!en[0].isIntersecting) return;
+  gradeVista = true; obs.disconnect();
+  grade.querySelectorAll('.proj').forEach(c => c.classList.add('visivel'));
+}, { threshold: .05 }).observe(grade);
+// completa a última linha da grade com blocos pretos, como na referência
+function completaGrade() {
+  grade.querySelectorAll('.tampa').forEach(t => t.remove());
+  const colunas = getComputedStyle(grade).gridTemplateColumns.split(' ').length;
+  const n = grade.querySelectorAll('.proj').length;
+  const sobra = (colunas - n % colunas) % colunas;
+  for (let i = 0; i < sobra; i++) grade.insertAdjacentHTML('beforeend', '<div class="tampa"></div>');
+}
+function ativaInclinacao() {
+  if (!ponteiroFino || movimentoReduzido) return;
+  grade.querySelectorAll('.proj').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+      card.style.transform = `rotateX(${(.5 - py) * 8}deg) rotateY(${(px - .5) * 8}deg) translateZ(6px)`;
+      card.style.setProperty('--mx', px * 100 + '%'); card.style.setProperty('--my', py * 100 + '%');
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
 }
 let filtroAtual = 'todos';
 mostraProjetos(filtroAtual);
-document.querySelectorAll('#filtros button').forEach(b => b.addEventListener('click', () => {
-  document.querySelectorAll('#filtros button').forEach(x => x.classList.toggle('ativo', x === b));
+document.querySelectorAll('#filtros .filtro').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#filtros .filtro').forEach(x => x.classList.toggle('ativo', x === b));
   filtroAtual = b.dataset.f; mostraProjetos(filtroAtual);
 }));
-let larguraAntes = innerWidth;
-addEventListener('resize', () => { if (Math.abs(innerWidth - larguraAntes) > 50) { larguraAntes = innerWidth; mostraProjetos(filtroAtual); } });
+addEventListener('resize', completaGrade);
 
 // ---------- stack ----------
 document.getElementById('barras').insertAdjacentHTML('beforeend', HABILIDADES.map(([n, v]) =>
-  `<div class="barra"><div class="rot"><span>&gt; ${esc(n)}</span><span>${v}%</span></div><div class="trilho"><div class="enche" data-v="${v}"></div></div></div>`).join(''));
+  `<div class="skill"><div class="skill-topo"><span>&gt; ${esc(n)}</span><span class="skill-pct">${v}%</span></div><div class="trilho"><div class="enche" data-v="${v}"></div></div></div>`).join(''));
 document.getElementById('icones').innerHTML = ICONES.map(([n, f]) =>
-  `<div><img src="${DEVICON + f}" alt="" loading="lazy" width="40" height="40">${esc(n)}</div>`).join('');
+  `<div class="icone-tec"><img src="${DEVICON + f}" alt="" loading="lazy" width="34" height="34">${esc(n)}</div>`).join('');
 
-// ---------- aparece ao rolar, contadores, barras e terminal ----------
+// ---------- contadores e terminal ----------
 function contador(el) {
   const alvo = +el.dataset.conta, mais = el.dataset.mais || '';
   if (movimentoReduzido) { el.textContent = alvo.toLocaleString('pt-BR') + mais; return; }
@@ -257,43 +307,37 @@ function contador(el) {
 function digitaTerminal() {
   const corpo = document.getElementById('termCorpo');
   if (corpo.dataset.feito) return; corpo.dataset.feito = 1;
-  const cursor = '<span class="cursor"></span>';
+  const linha = (html, cls = 'linha-t') => { const d = document.createElement('div'); d.className = cls; d.innerHTML = html; corpo.appendChild(d); return d; };
+  const final = () => linha('<span>andres@lab:~$</span> <span class="cursor"></span>');
   if (movimentoReduzido) {
-    corpo.innerHTML = TERMINAL.map(([p, c, s]) => `<span class="p">${p}</span>${esc(c)}\n<span class="s">${esc(s)}</span>\n`).join('') + `<span class="p">andres@lab:~$</span> ${cursor}`;
-    return;
+    TERMINAL.forEach(([p, c, s]) => { linha(`<span>${p}</span>${esc(c)}`); linha(esc(s), 'linha-t saida'); });
+    final(); return;
   }
-  let html = '', li = 0;
-  (function linha() {
-    if (li >= TERMINAL.length) { corpo.innerHTML = html + `<span class="p">andres@lab:~$</span> ${cursor}`; return; }
+  let li = 0;
+  (function proxima() {
+    if (li >= TERMINAL.length) { final(); return; }
     const [p, cmd, saida] = TERMINAL[li++];
+    const d = linha(`<span>${p}</span><span class="cmd"></span><span class="cursor"></span>`);
+    const alvo = d.querySelector('.cmd');
     let k = 0;
     const t = setInterval(() => {
-      k++;
-      corpo.innerHTML = html + `<span class="p">${p}</span>${esc(cmd.slice(0, k))}${cursor}`;
+      alvo.textContent = cmd.slice(0, ++k);
       if (k >= cmd.length) {
         clearInterval(t);
-        setTimeout(() => {
-          html += `<span class="p">${p}</span>${esc(cmd)}\n<span class="s">${esc(saida)}</span>\n`;
-          corpo.innerHTML = html + cursor;
-          setTimeout(linha, 450);
-        }, 300);
+        setTimeout(() => { d.querySelector('.cursor').remove(); linha(esc(saida), 'linha-t saida'); setTimeout(proxima, 420); }, 280);
       }
     }, 38);
   })();
 }
-const observador = new IntersectionObserver(entradas => entradas.forEach(en => {
-  if (!en.isIntersecting) return;
-  const el = en.target;
-  el.classList.add('visivel');
-  el.querySelectorAll('[data-conta]').forEach(contador);
-  el.querySelectorAll('.enche').forEach(b => b.style.width = b.dataset.v + '%');
-  if (el.id === 'terminal') digitaTerminal();
-  observador.unobserve(el);
-}), { threshold: .15 });
-document.querySelectorAll('.revelar').forEach(el => observador.observe(el));
+observa();
+
+// ---------- contato: aparece em sequência ----------
+const contatoGrade = document.getElementById('contatoGrade');
+new IntersectionObserver((en, obs) => {
+  if (en[0].isIntersecting) { contatoGrade.classList.add('visivel'); obs.disconnect(); }
+}, { threshold: .15 }).observe(contatoGrade);
 
 // ---------- botões magnéticos e onda no clique ----------
-const ponteiroFino = matchMedia('(pointer: fine)').matches;
 document.addEventListener('click', e => {
   const b = e.target.closest('.btn');
   if (!b) return;
@@ -317,6 +361,46 @@ if (ponteiroFino && !movimentoReduzido) {
 document.getElementById('form').addEventListener('submit', e => {
   e.preventDefault();
   const f = new FormData(e.target);
-  const texto = `Olá Andres, sou ${f.get('nome').trim()}${f.get('empresa').trim() ? ', da ' + f.get('empresa').trim() : ''}.\n\n${f.get('msg').trim()}`;
+  const empresa = f.get('empresa').trim();
+  const texto = `Olá Andres, sou ${f.get('nome').trim()}${empresa ? ', da ' + empresa : ''}.\n\n${f.get('msg').trim()}`;
   open('https://wa.me/5531982775122?text=' + encodeURIComponent(texto), '_blank', 'noopener');
 });
+
+// ---------- terminal de navegação (botão >_ ou Ctrl+K) ----------
+(function terminalNavegacao() {
+  const fundo = document.getElementById('cmdFundo');
+  const entrada = document.getElementById('cmdEntrada');
+  const saida = document.getElementById('cmdSaida');
+  const ir = id => () => { fecha(); document.getElementById(id).scrollIntoView({ behavior: movimentoReduzido ? 'auto' : 'smooth' }); return `indo para ${id}...`; };
+  const COMANDOS = {
+    help: () => 'comandos: sobre, projetos, dados, stack, jornada, contato, whatsapp, github, tema, clear',
+    sobre: ir('sobre'), projetos: ir('projetos'), dados: ir('dados'), stack: ir('stack'), jornada: ir('jornada'), contato: ir('contato'),
+    whatsapp: () => { open('https://wa.me/5531982775122', '_blank', 'noopener'); return 'abrindo o WhatsApp...'; },
+    github: () => { open('https://github.com/andrssb', '_blank', 'noopener'); return 'abrindo o GitHub...'; },
+    tema: () => { document.getElementById('tema').click(); return 'tema trocado.'; },
+    whoami: () => 'andres barbosa · dev full stack · belo horizonte, mg',
+    clear: () => { saida.innerHTML = ''; return null; },
+  };
+  function abre() { fundo.classList.add('aberto'); setTimeout(() => entrada.focus(), 50); if (!saida.innerHTML) escreve(null, 'digite help para ver os comandos.'); }
+  function fecha() { fundo.classList.remove('aberto'); entrada.value = ''; }
+  function escreve(eco, res) {
+    if (eco !== null) saida.insertAdjacentHTML('beforeend', `<div class="eco">$ ${esc(eco)}</div>`);
+    if (res) saida.insertAdjacentHTML('beforeend', `<div class="res">${esc(res)}</div>`);
+    saida.scrollTop = saida.scrollHeight;
+  }
+  document.getElementById('cmdBotao').addEventListener('click', abre);
+  fundo.addEventListener('click', e => { if (e.target === fundo) fecha(); });
+  addEventListener('keydown', e => {
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); fundo.classList.contains('aberto') ? fecha() : abre(); }
+    if (e.key === 'Escape') fecha();
+  });
+  entrada.addEventListener('keydown', e => {
+    if (e.key !== 'Enter') return;
+    const cmd = entrada.value.trim().toLowerCase();
+    entrada.value = '';
+    if (!cmd) return;
+    const f = COMANDOS[cmd];
+    const r = f ? f() : `comando não encontrado: ${cmd}. digite help.`;
+    if (cmd !== 'clear') escreve(cmd, r);
+  });
+})();
