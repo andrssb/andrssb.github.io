@@ -2,26 +2,27 @@
 // Para mudar cabelo, pele ou roupa, troque só as cores em CORES.
 const AVATAR = [
   '..........kkhhhhhhhhkk..........',
-  '.........khhhhhHHHhhhhk.........',
-  '........khhHHHhhhhhhhhhk........',
+  '.........kHhHhHhHhHhHhk.........',
   '........khhhhhhhhhhhhhhk........',
-  '.......khhhhhhhhhhhhhhhhk.......',
-  '.......khhhhhhhhhhhhhhhhk.......',
-  '.......khhhhhsshhshhhhhhk.......',
-  '.......khhsssssssssssShhk.......',
-  '.......khhshhhhsshhhhShhk.......',
-  '.......khhgggggssggggghhk.......',
-  '.......ksggBLLggggBLLggsk.......',
-  '.......kSsgLeLgssgLeLgSSk.......',
+  '........khhHhHhHhHhHhHhk........',
+  '........khhhhhhhhhhhhhhk........',
+  '........khshhhhhhhhhhshk........',
+  '........khsssssssssssshk........',
+  '........kfssssssssssssfk........',
+  '........kfshhhhsshhhhsfk........',
+  '........kfgggggssgggggfk........',
+  '........kggBeLggggBeLggk........',
+  '.......kssgLewgssgLewgSsk.......',
+  '.......kSsgLLLgssgLLLgSSk.......',
   '.......kssgggggSSgggggSsk.......',
-  '........khsssssSSssssShk........',
-  '........khssssssSssssShk........',
-  '........khssshhhhhhssshk........',
-  '........khhsshmmmmhsshhk........',
-  '........khhhhhhhhhhHhhhk........',
-  '........kshhHhhhhhhhhhsk........',
-  '........kssshhhhhhhhsssk........',
-  '.........kkkkSSSSSSkkkk.........',
+  '.......ksbsssssSSsssssbsk.......',
+  '........kbssssSssSssssbk........',
+  '........kbssbbbbbbbbssbk........',
+  '........kbbssbmmmmbssbbk........',
+  '........kbbbbbbbbbbbbbbk........',
+  '........ksbbbbbbbbbbbbsk........',
+  '........ksssbbbbbbbbsssk........',
+  '.........kkkkbbbbbbkkkk.........',
   '............kSSSSSSk............',
   '.......kkkkkkSSSSSSkkkkkk.......',
   '....kkktttttTTTTTTTTtttttkkk....',
@@ -30,13 +31,12 @@ const AVATAR = [
   '...ktttttttWWtWtWWtWttttttttk...',
   '...kttttttttttttttttttttttttk...',
   '...ktTTtttttttiiiitttttttTTtk...',
-  '...ktttttttttijjiiitttttttttk...',
+  '...kssSttttttijjiiittttttSssk...',
   '...kssStttttIiiiiiiItttttSssk...',
   '...kssStttttIkykkykItttttSssk...',
   '...kssStttttIiikkiiItttttSssk...',
   '...kssStttttIiikkiiItttttSssk...',
-  '...kssStttttIikkkkiItttttSssk...',
-  '...kssSttttttIIIIIIttttttSssk...',
+  '...kssSttttttIkkkkIttttttSssk...',
   '...kssStttttttIIIItttttttSssk...',
   '...kSSSttttttttttttttttttSSSk...',
   '...kSSSttttttttttttttttttSSSk...',
@@ -48,22 +48,25 @@ const AVATAR = [
   '........kpPppppkkpppPppk........',
   '........kpPppppkkpppPppk........',
   '........kpPppppkkpppPppk........',
-  '.......kbbPbbbbkkbbPbbbbk.......',
-  '.......kbbbbbbbkkbbbbbbbk.......',
+  '.......knnPnnnnkknnPnnnnk.......',
+  '.......knnnnnnnkknnnnnnnk.......',
   '.......kuuuuuuukkuuuuuuuk.......',
 ];
 
 const CORES = {
   k: '#0b0b0c', // contorno
-  h: '#2a1c14', // cabelo e barba
-  H: '#45301f', // brilho do cabelo
-  s: '#c8906a', // pele
-  S: '#a9714f', // pele (sombra)
-  e: '#14110f', // pupila
-  g: '#101010', // armação dos óculos
-  L: '#e7eef2', // lente
-  B: '#ffffff', // reflexo da lente
-  m: '#6e3b2c', // boca
+  h: '#17110e', // cabelo
+  H: '#2b211b', // textura do cabelo
+  f: '#5a4033', // degradê do cabelo
+  b: '#1d1612', // barba
+  s: '#c68b66', // pele
+  S: '#a8704f', // pele (sombra)
+  e: '#2a1a12', // olhos
+  w: '#f4efe9', // branco do olho
+  g: '#121214', // armação dos óculos
+  L: '#d39d7b', // lente (pele através do vidro)
+  B: '#d9e6ff', // reflexo azulado da lente
+  m: '#9b5a4a', // boca
   t: '#1c1c1f', // camiseta
   T: '#2c2c31', // gola e barra
   W: '#e8e8e8', // letreiro da banda
@@ -73,7 +76,7 @@ const CORES = {
   j: '#d3d7dd', // brilho do metal
   p: '#27272c', // calça
   P: '#36363d', // calça (detalhe)
-  b: '#151517', // tênis
+  n: '#151517', // tênis
   u: '#4a4a50', // solado
 };
 
