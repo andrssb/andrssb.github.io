@@ -14,25 +14,14 @@ const PROJETOS = [
     links: [], priv: 'em andamento',
   },
   {
-    nome: 'Limo', tipo: 'produto', tecs: 'TypeScript · Node.js · React · PostgreSQL · Stripe',
-    texto: 'Plataforma B2B de prospecção: encontra empresas por segmento e região na base aberta da Receita Federal, enriquece os contatos com motor próprio e leva os leads para o CRM. Tem extensão para Chrome.',
-    res: 'No ar, com extensão publicada na Chrome Web Store.',
-    links: [['conhecer', 'https://limoapp.com.br/']],
-  },
-  {
-    nome: 'CRM de Prospecção', tipo: 'produto', tecs: 'JavaScript · Vercel Functions · Redis · Python',
-    texto: 'CRM com um funil por produto, cadência automática de follow-up e sincronização com os disparos. Serverless, com o estado em Redis: abrir o CRM inteiro custa uma leitura só.',
-    links: [], priv: 'uso interno, com senha',
+    nome: 'Raio-X do Delivery', tipo: 'dados', tecs: 'Python · SQL · JavaScript · SVG',
+    texto: 'Análise de 5.016 restaurantes de delivery nas 27 capitais, com gráficos em SVG puro a partir de dados agregados.',
+    links: [['ver a análise', 'dados-restaurantes/']],
   },
   {
     nome: 'Rumo ao Altar', tipo: 'jogo', tecs: 'JavaScript · Canvas · Vercel Functions · Redis',
     texto: 'Jogo de plataforma personalizado para casamentos: a história do casal vira fases e os convidados disputam um ranking até a festa. Já roda no site de casamento de um casal real.',
     links: [['jogar a demo', 'https://rumo-ao-altar.vercel.app/']],
-  },
-  {
-    nome: 'Forno da Vila', tipo: 'produto', tag: 'DEMO', tecs: 'JavaScript · SVG · Cloudflare Workers',
-    texto: 'Cardápio digital de pizzaria com meio a meio, borda, combos, taxa por bairro e troco. O pedido sai formatado direto no WhatsApp, sem comissão de aplicativo.',
-    links: [['fazer um pedido teste', 'https://forno-da-vila-demo.thiago-castro.workers.dev/']],
   },
   {
     nome: 'Minecraft Status', tipo: 'estudo', tecs: 'Python · FastAPI',
@@ -62,7 +51,7 @@ const ICONES = [
 ];
 
 const TERMINAL = [
-  ['andres@lab:~$', ' whoami', 'andres barbosa · dev full stack e análise de dados'],
+  ['andres@lab:~$', ' whoami', 'andres barbosa · software engineer'],
   ['andres@lab:~$', ' cat formacao.txt', 'ADS (Descomplica) · Análise de Dados (Anhanguera) · Engenharia de Dados (Indicium)'],
   ['andres@lab:~$', ' ls ferramentas/', 'sql  postgresql  python  redis  node.js  playwright'],
 ];
@@ -102,8 +91,8 @@ desenhaAvatar(document.getElementById('boneco'));
   if (visto || movimentoReduzido) { tela.remove(); setTimeout(() => dispatchEvent(new Event('bootFim')), 50); return; }
   const linhas = [
     '> inicializando andres.dev...',
-    '> carregando módulos: front [ok] back [ok] dados [ok] whatsapp [ok]',
-    '> conectando ao CRM...',
+    '> carregando módulos: front [ok] back [ok] dados [ok] deploy [ok]',
+    '> conectando ao banco de dados...',
     '> compilando café...',
     '> acesso concedido.',
   ];
@@ -361,7 +350,7 @@ document.getElementById('form').addEventListener('submit', e => {
     whatsapp: () => { open('https://wa.me/5531982775122', '_blank', 'noopener'); return 'abrindo o WhatsApp...'; },
     github: () => { open('https://github.com/andrssb', '_blank', 'noopener'); return 'abrindo o GitHub...'; },
     tema: () => { document.getElementById('tema').click(); return 'tema trocado.'; },
-    whoami: () => 'andres barbosa · dev full stack e análise de dados · belo horizonte, mg',
+    whoami: () => 'andres barbosa · software engineer · belo horizonte, mg',
     clear: () => { saida.innerHTML = ''; return null; },
   };
   function abre() { fundo.classList.add('aberto'); setTimeout(() => entrada.focus(), 50); if (!saida.innerHTML) escreve(null, 'digite help para ver os comandos.'); }
