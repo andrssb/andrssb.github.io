@@ -18,11 +18,6 @@ const PROJETOS = [
     texto: 'Data warehouse de vendas em modelo dimensional, com carga incremental, tabelas particionadas, índices e visões materializadas para consultas analíticas sobre dezenas de milhões de linhas.',
     links: [], priv: 'em andamento',
   },
-  {
-    nome: 'Raio-X do Delivery', tipo: 'dados', tecs: 'Python · SQL · JavaScript · SVG',
-    texto: 'Análise de 5.016 restaurantes de delivery nas 27 capitais, com gráficos em SVG puro a partir de dados agregados.',
-    links: [['ver a análise', 'dados-restaurantes/']],
-  },
 ];
 
 const HABILIDADES = [
