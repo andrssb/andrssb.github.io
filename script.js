@@ -4,6 +4,11 @@ const ponteiroFino = matchMedia('(pointer: fine)').matches;
 // ---------- dados ----------
 const PROJETOS = [
   {
+    nome: 'Caça Vagas', tipo: 'noar', tag: 'NO AR', tecs: 'Python · TypeScript · Cloudflare Pages · D1 · GitHub Actions',
+    texto: 'Vagas de TI de Gupy, Sólides, Programathor e InfoJobs num lugar só, atualizadas todo dia. Mais de 1.500 vagas com filtro por nível, modalidade, estado e contrato, nota de encaixe pelas tecnologias da pessoa e conta opcional para salvar candidaturas.',
+    links: [['abrir o site', 'https://caca-vagas.pages.dev'], ['ver no GitHub', 'https://github.com/andrssb/caca-vagas']],
+  },
+  {
     nome: 'Caixa Forte API', tipo: 'andamento', tag: 'EM ANDAMENTO', tecs: 'Java · Spring Boot · PostgreSQL · Redis · Docker',
     texto: 'API de pagamentos com livro-razão de dupla entrada, idempotência por chave de requisição, controle de concorrência no saldo e fila de eventos com reprocessamento. Testes de carga e de corrida.',
     links: [], priv: 'em andamento',
@@ -17,21 +22,6 @@ const PROJETOS = [
     nome: 'Raio-X do Delivery', tipo: 'dados', tecs: 'Python · SQL · JavaScript · SVG',
     texto: 'Análise de 5.016 restaurantes de delivery nas 27 capitais, com gráficos em SVG puro a partir de dados agregados.',
     links: [['ver a análise', 'dados-restaurantes/']],
-  },
-  {
-    nome: 'Rumo ao Altar', tipo: 'jogo', tecs: 'JavaScript · Canvas · Vercel Functions · Redis',
-    texto: 'Jogo de plataforma personalizado para casamentos: a história do casal vira fases e os convidados disputam um ranking até a festa. Já roda no site de casamento de um casal real.',
-    links: [['jogar a demo', 'https://rumo-ao-altar.vercel.app/']],
-  },
-  {
-    nome: 'Minecraft Status', tipo: 'estudo', tecs: 'Python · FastAPI',
-    texto: 'Painel que consulta servidores de Minecraft pelo protocolo Server List Ping: online, jogadores, versão, MOTD colorido, ping e ícone.',
-    links: [['ver no GitHub', 'https://github.com/andrssb/minecraft-server-status']],
-  },
-  {
-    nome: 'Controle de Gastos', tipo: 'estudo', tecs: 'Python · FastAPI · SQLAlchemy · pytest',
-    texto: 'Controle de gastos pessoais com banco em camadas, testes isolados e gráfico por categoria desenhado sem biblioteca.',
-    links: [['ver no GitHub', 'https://github.com/andrssb/controle-de-gastos']],
   },
 ];
 
