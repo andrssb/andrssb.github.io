@@ -4,25 +4,27 @@ const ponteiroFino = matchMedia('(pointer: fine)').matches;
 // ---------- dados ----------
 const PROJETOS = [
   {
-    nome: 'Limo', tipo: 'saas', tag: 'SAAS', tecs: 'TypeScript · Fastify · React · PostgreSQL · Redis · Claude · Groq · ElevenLabs',
+    nome: 'Limo', tipos: ['ia', 'backend'], tag: 'SAAS', destaque: true, tecs: 'TypeScript · Fastify · React · PostgreSQL · Redis · Claude · Groq · ElevenLabs',
     texto: 'Plataforma de prospecção B2B para times comerciais, em produção de maio a outubro de 2026. Roteador de LLMs com fallback entre Claude e Groq, coach de vendas ao vivo com transcrição Whisper, qualificação de leads por IA e agente de voz que liga e agenda reuniões, com ponte SIP em Asterisk. Motor próprio de enriquecimento sobre a base da Receita Federal.',
     res: '14,5 milhões de empresas na base · extensão publicada na Chrome Web Store · monorepo com cerca de 30 mil linhas',
     links: [['ver no GitHub', 'https://github.com/andrssb/limo']],
   },
   {
-    nome: 'Caça Vagas', tipo: 'noar', tag: 'NO AR', tecs: 'Python · TypeScript · Cloudflare Pages · D1 · GitHub Actions',
+    nome: 'Caça Vagas', tipos: ['dados', 'backend'], tag: 'NO AR', tecs: 'Python · TypeScript · Cloudflare Pages · D1 · GitHub Actions',
     texto: 'Vagas de TI de Gupy, Sólides, Programathor e InfoJobs num lugar só, atualizadas todo dia. Mais de 1.500 vagas com filtro por nível, modalidade, estado e contrato, nota de encaixe pelas tecnologias da pessoa e conta opcional para salvar candidaturas.',
     links: [['abrir o site', 'https://caca-vagas.pages.dev'], ['ver no GitHub', 'https://github.com/andrssb/caca-vagas']],
   },
   {
-    nome: 'Caixa Forte API', tipo: 'andamento', tag: 'EM ANDAMENTO', tecs: 'Java · Spring Boot · PostgreSQL · Redis · Docker',
-    texto: 'API de pagamentos com livro-razão de dupla entrada, idempotência por chave de requisição, controle de concorrência no saldo e fila de eventos com reprocessamento. Testes de carga e de corrida.',
-    links: [], priv: 'em andamento',
+    nome: 'Caixa Forte API', tipos: ['backend'], tag: 'CONCLUÍDO', tecs: 'Java 21 · Spring Boot · PostgreSQL · Redis Streams · Testcontainers · k6',
+    texto: 'API de pagamentos com livro-razão de dupla entrada. Idempotência por chave de requisição com trava no PostgreSQL, travas pessimistas em ordem fixa contra deadlock e outbox com publicação no Redis Streams e reprocessamento. As regras críticas também valem no próprio banco.',
+    res: '1.000 transferências simultâneas sem saldo negativo · 455 transferências/s no teste de carga · 26 testes de integração',
+    links: [['ver no GitHub', 'https://github.com/andrssb/caixa-forte-api']],
   },
   {
-    nome: 'Armazém Analítico', tipo: 'andamento', tag: 'EM ANDAMENTO', tecs: 'PostgreSQL · SQL · Python · dbt · Docker',
-    texto: 'Data warehouse de vendas em modelo dimensional, com carga incremental, tabelas particionadas, índices e visões materializadas para consultas analíticas sobre dezenas de milhões de linhas.',
-    links: [], priv: 'em andamento',
+    nome: 'Armazém Analítico', tipos: ['dados'], tag: 'CONCLUÍDO', tecs: 'PostgreSQL · SQL · Python · dbt · Docker',
+    texto: 'Data warehouse de vendas em modelo estrela, com histórico de produto (SCD 2), carga incremental idempotente, fato particionado por mês e visões materializadas. Modelos em dbt com segmentação RFM e coortes de retenção, e comparação de desempenho com EXPLAIN ANALYZE.',
+    res: '3 milhões de itens carregados mês a mês · consulta anual de 2,3 s para menos de 0,1 ms · 38 testes no dbt',
+    links: [['ver no GitHub', 'https://github.com/andrssb/armazem-analitico']],
   },
 ];
 
@@ -199,14 +201,14 @@ function observa(raiz = document) { raiz.querySelectorAll('.revelar:not(.visivel
 // ---------- projetos ----------
 const grade = document.getElementById('grade');
 function mostraProjetos(f) {
-  const lista = PROJETOS.filter(p => f === 'todos' || p.tipo === f);
+  const lista = PROJETOS.filter(p => f === 'todos' || p.tipos.includes(f));
   grade.innerHTML = lista.map(p => `
-    <article class="proj revelar">
+    <article class="proj revelar${p.destaque ? ' destaque' : ''}">
       <span class="brilho"></span><span class="mira m1"></span><span class="mira m2"></span><span class="mira m3"></span><span class="mira m4"></span>
-      <div class="proj-topo"><h3>${esc(p.nome)}</h3><span class="proj-tag">${esc(p.tag || p.tipo.toUpperCase())}</span></div>
+      <div class="proj-topo"><h3>${esc(p.nome)}</h3><span class="proj-tag">${esc(p.tag)}</span></div>
       <div class="tecs">${esc(p.tecs)}</div>
       <p>${esc(p.texto)}</p>
-      ${p.res ? `<p class="res">${esc(p.res)}</p>` : ''}
+      ${p.res ? `<ul class="res">${p.res.split(' · ').map(r => `<li>${esc(r)}</li>`).join('')}</ul>` : ''}
       <div class="acoes">${p.links.map(([t, u]) => `<a class="link" href="${u}"${u.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}>${esc(t)} &rarr;</a>`).join('')}${p.priv ? `<span class="priv">${esc(p.priv)}</span>` : ''}</div>
     </article>`).join('');
   completaGrade();
@@ -222,13 +224,14 @@ new IntersectionObserver((en, obs) => {
   gradeVista = true; obs.disconnect();
   grade.querySelectorAll('.proj').forEach(c => c.classList.add('visivel'));
 }, { threshold: .05 }).observe(grade);
-// completa a última linha da grade com blocos pretos, como na referência
+// se a última linha não fecha, o último card estica até o fim em vez de deixar buraco
 function completaGrade() {
-  grade.querySelectorAll('.tampa').forEach(t => t.remove());
+  const comuns = [...grade.querySelectorAll('.proj:not(.destaque)')];
+  comuns.forEach(c => { c.style.gridColumn = ''; });
+  if (!comuns.length) return;
   const colunas = getComputedStyle(grade).gridTemplateColumns.split(' ').length;
-  const n = grade.querySelectorAll('.proj').length;
-  const sobra = (colunas - n % colunas) % colunas;
-  for (let i = 0; i < sobra; i++) grade.insertAdjacentHTML('beforeend', '<div class="tampa"></div>');
+  const sobra = (colunas - comuns.length % colunas) % colunas;
+  if (sobra) comuns[comuns.length - 1].style.gridColumn = `span ${sobra + 1}`;
 }
 function ativaInclinacao() {
   if (!ponteiroFino || movimentoReduzido) return;

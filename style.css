@@ -165,7 +165,20 @@ section.azul { background: var(--cor); color: #fff; }
 .proj:hover .proj-tag { background: var(--cor); color: #fff; }
 .proj .tecs { font-size: 10.5px; letter-spacing: .5px; opacity: .6; }
 .proj p { font-size: 13px; line-height: 1.7; opacity: .85; }
-.proj .res { font-weight: 700; opacity: 1; border-left: 3px solid currentColor; padding-left: 10px; }
+.proj .res { list-style: none; display: grid; gap: 10px; margin: 0; padding: 0; }
+.proj .res li { font-size: 13px; font-weight: 700; line-height: 1.45; border-left: 3px solid currentColor; padding-left: 12px; }
+/* card em destaque: ocupa a linha inteira, texto à esquerda e resultados à direita */
+.proj.destaque {
+  grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); column-gap: 56px; row-gap: 12px; padding: 40px;
+  grid-template-areas: "topo topo" "tecs res" "texto res" "texto acoes"; grid-template-rows: auto auto auto 1fr;
+}
+.proj.destaque .proj-topo { grid-area: topo; }
+.proj.destaque .tecs { grid-area: tecs; }
+.proj.destaque > p { grid-area: texto; font-size: 14px; }
+.proj.destaque .res { grid-area: res; align-self: start; }
+.proj.destaque .res li { font-size: 15px; }
+.proj.destaque .acoes { grid-area: acoes; align-self: end; }
+.proj.destaque h3 { font-size: 30px; }
 .proj .acoes { display: flex; flex-wrap: wrap; gap: 16px; margin-top: auto; padding-top: 4px; }
 .proj .link { font-size: 11.5px; text-decoration: underline; transition: color .15s; }
 .proj:hover .link { color: var(--cor-clara); }
@@ -176,7 +189,6 @@ section.azul { background: var(--cor); color: #fff; }
 .mira.m3 { bottom: 10px; left: 10px; border-width: 0 0 2px 2px; }
 .mira.m4 { bottom: 10px; right: 10px; border-width: 0 2px 2px 0; }
 .proj:hover .mira { opacity: .55; width: 18px; height: 18px; }
-.grade .tampa { background: var(--tinta); }
 
 /* dados (lab) */
 .lab { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
@@ -300,6 +312,8 @@ footer span { opacity: .75; }
   section { padding: 70px 16px; }
   .sobre, .lab, .skills, .contato { grid-template-columns: 1fr; gap: 40px; }
   .grade { grid-template-columns: minmax(0, 1fr); }
+  .proj.destaque { grid-template-columns: minmax(0, 1fr); grid-template-areas: "topo" "tecs" "texto" "res" "acoes"; grid-template-rows: none; padding: 28px; }
+  .proj.destaque h3 { font-size: 24px; }
 }
 @media (max-width: 520px) {
   .boneco { width: 200px; }
