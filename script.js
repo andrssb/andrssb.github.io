@@ -4,6 +4,12 @@ const ponteiroFino = matchMedia('(pointer: fine)').matches;
 // ---------- dados ----------
 const PROJETOS = [
   {
+    nome: 'Limo', tipo: 'saas', tag: 'SAAS', tecs: 'TypeScript · Fastify · React · PostgreSQL · Redis · Claude · Groq · ElevenLabs',
+    texto: 'Plataforma de prospecção B2B para times comerciais, em produção de maio a outubro de 2026. Roteador de LLMs com fallback entre Claude e Groq, coach de vendas ao vivo com transcrição Whisper, qualificação de leads por IA e agente de voz que liga e agenda reuniões, com ponte SIP em Asterisk. Motor próprio de enriquecimento sobre a base da Receita Federal.',
+    res: '14,5 milhões de empresas na base · extensão publicada na Chrome Web Store · monorepo com cerca de 30 mil linhas',
+    links: [['ver no GitHub', 'https://github.com/andrssb/limo']],
+  },
+  {
     nome: 'Caça Vagas', tipo: 'noar', tag: 'NO AR', tecs: 'Python · TypeScript · Cloudflare Pages · D1 · GitHub Actions',
     texto: 'Vagas de TI de Gupy, Sólides, Programathor e InfoJobs num lugar só, atualizadas todo dia. Mais de 1.500 vagas com filtro por nível, modalidade, estado e contrato, nota de encaixe pelas tecnologias da pessoa e conta opcional para salvar candidaturas.',
     links: [['abrir o site', 'https://caca-vagas.pages.dev'], ['ver no GitHub', 'https://github.com/andrssb/caca-vagas']],
